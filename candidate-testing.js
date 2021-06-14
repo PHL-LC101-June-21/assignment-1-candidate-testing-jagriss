@@ -29,8 +29,8 @@ console.log(candidateAnswer);
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-if (candidateAnswer === correctAnswer); {
- console.log("Correct");
+if (candidateAnswer === "Sally Ride"); {
+  console.log("Correct");
 }
   let grade;
   
