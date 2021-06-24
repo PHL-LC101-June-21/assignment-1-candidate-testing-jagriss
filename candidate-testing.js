@@ -9,9 +9,10 @@ let candidateName;
 let question = "Who was the first American woman in space? ";
 let correctAnswer = "Sally Ride";
 let candidateAnswer = "";
-let questions = ["Who was the first American woman in space?", "True or false: 5 kilometer == 5000 meters?", '(5 + 3)/2 * 10 = ?', "Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2?", "What is the minimum crew size for the ISS?"];
+let questions;
 let correctAnswers;
-let candidateAnswers = [];
+let candidateAnswers;
+let candidateAnswersArr = [];
 let quiz = [
   [1, "1) Who was the first American woman in space?", "sally ride"],
   [2, "2) True or false: 5 kilometer == 5000 meters?", "true"],
@@ -31,8 +32,8 @@ function askQuestion() {
   //candidateAnswer = input.question(question);
 
   for (let i = 0; i < quiz.length; i++) {
-    correctAnswers = input.question(quiz[i][1]);
-    candidateAnswers.push(correctAnswers.toLowerCase());
+    candidateAnswers = input.question(quiz[i][1]);
+    candidateAnswersArr.push(candidateAnswers.toLowerCase());
     console.log("Your Answer:" + candidateAnswers);
 
   }
@@ -40,16 +41,22 @@ function askQuestion() {
 function gradeQuiz(candidateAnswers) {
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly //
   let grade = 0;
-  for (let i = 0; i < candidateAnswers.length; i++) {
+  for (let i = 0; i < candidateAnswersArr.length; i++) {
 
-    if (candidateAnswers[i] === quiz[i][2]) {
+    if (candidateAnswersArr[i] === quiz[i][2]) {
       console.log(`You answered question ${quiz[i][0]} correct.`)
       grade++
     } else {
       console.log(`You answered question ${quiz[i][0]} incorrect.`)
     }
   }
-  console.log(grade/quiz.length*100);
+  console.log("Overall Grade:" + (grade/quiz.length)*100 + "%");
+  let gradedQuiz = (grade/quiz.length)*100;
+  if (gradedQuiz > 80) {
+    console.log("Status: Pass");
+  } else {
+    console.log("Status: Failed");
+  }
   return grade;
 }
 
